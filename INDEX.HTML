@@ -2,255 +2,1522 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Morel Guyto | IT Technician</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #0f172a;
-      --bg-alt: #020617;
-      --accent: #38bdf8;
-      --accent-soft: #0ea5e9;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --card: #111827;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guyto Morel | Senior Advisor Technical Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-bright: #f8fafc;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --border: rgba(148, 163, 184, 0.1);
+            --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --gradient-2: linear-gradient(135deg, #06b6d4, #3b82f6);
+        }
 
-    header {
-      padding: 2rem 8vw 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(15,23,42,0.9), rgba(15,23,42,0.4));
-      z-index: 10;
-      border-bottom: 1px solid rgba(148,163,184,0.2);
-    }
-    .logo {
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    nav a {
-      margin-left: 1.5rem;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-    }
-    nav a:hover { color: var(--accent); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    main { padding: 3rem 8vw 4rem; max-width: 1100px; margin: 0 auto; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.5fr);
-      gap: 3rem;
-      align-items: center;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(148,163,184,0.2);
-    }
-    .hero-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-    }
-    .hero-title span {
-      color: var(--accent);
-    }
-    .hero-sub {
-      margin-top: 0.75rem;
-      color: var(--muted);
-      max-width: 32rem;
-    }
-    .hero-meta {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem 2rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .hero-actions {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .btn {
-      padding: 0.7rem 1.4rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      cursor: pointer;
-      background: transparent;
-      color: var(--text);
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-soft), var(--accent));
-      border: none;
-      color: #0b1120;
-      font-weight: 600;
-    }
-    .btn-primary:hover {
-      filter: brightness(1.05);
-    }
-    .btn-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
-    .hero-card {
-      background: radial-gradient(circle at top left, #1e293b 0, #020617 55%);
-      border-radius: 1.5rem;
-      padding: 1.8rem;
-      border: 1px solid rgba(148,163,184,0.3);
-      box-shadow: 0 24px 60px rgba(15,23,42,0.8);
-    }
-    .hero-card h2 {
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-    .hero-card p {
-      font-size: 0.95rem;
-      color: var(--text);
-      margin-bottom: 1rem;
-    }
-    .hero-card-tag {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-    }
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
 
-    /* Sections */
-    section {
-      margin-top: 3rem;
-    }
-    section h2 {
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-    }
+        .bg-animation .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
-      gap: 2.5rem;
-    }
+        .bg-animation .orb:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent);
+            top: -200px;
+            right: -200px;
+            animation-delay: 0s;
+        }
 
-    .card {
-      background: var(--card);
-      border-radius: 1.2rem;
-      padding: 1.5rem 1.6rem;
-      border: 1px solid rgba(148,163,184,0.25);
-    }
-    .card h3 {
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-    .pill {
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.35);
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
+        .bg-animation .orb:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -7s;
+        }
 
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
-    }
-    .timeline-item {
-      position: relative;
-      padding-left: 1.4rem;
-    }
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: 0.35rem;
-      top: 0.2rem;
-      width: 0.5rem;
-      height: 0.5rem;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-    .timeline-item::after {
-      content: "";
-      position: absolute;
-      left: 0.55rem;
-      top: 0.9rem;
-      width: 1px;
-      height: calc(100% - 0.9rem);
-      background: rgba(148,163,184,0.4);
-    }
-    .timeline-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-    .timeline-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 0.1rem;
-    }
-    .timeline-body {
-      font-size: 0.9rem;
-      margin-top: 0.4rem;
-      color: var(--text);
-    }
-    .timeline-tags {
-      margin-top: 0.4rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
+        .bg-animation .orb:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1), transparent);
+            top: 50%;
+            left: 50%;
+            animation-delay: -14s;
+        }
 
-    .list {
-      list-style: none;
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-    .list li {
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 30px) scale(0.95); }
+            75% { transform: translate(40px, 20px) scale(1.05); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav.scrolled {
+            padding: 0.6rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-bright);
+            background: var(--accent-glow);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        /* Profile Picture */
+        .profile-pic-wrapper {
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-pic-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+        }
+
+        .profile-pic-ring {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: 192px;
+            height: 192px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            animation: spin 8s linear infinite;
+            padding: 3px;
+        }
+
+        .profile-pic-ring::before {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Placeholder initials avatar (shown when no image) */
+        .profile-pic-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .profile-status {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 3;
+            width: 28px;
+            height: 28px;
+            background: #22c55e;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            animation: statusPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            background: var(--accent-glow);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-bright);
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .btn {
+            padding: 0.85rem 2rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--accent);
+            color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+        }
+
+        /* Sections */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--text-bright);
+            letter-spacing: -1px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 2rem 6rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image-container {
+            position: relative;
+        }
+
+        .about-image {
+            width: 280px;
+            height: 340px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 2px solid var(--border);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-image-placeholder {
+            width: 280px;
+            height: 340px;
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 3px;
+        }
+
+        .about-image-decoration {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 280px;
+            height: 340px;
+            border-radius: 20px;
+            border: 2px solid var(--accent);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .about-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        .about-detail-label {
+            color: var(--text-muted);
+            min-width: 70px;
+        }
+
+        .about-detail-value {
+            color: var(--text-bright);
+            font-weight: 500;
+        }
+
+        .about-detail-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+            transform: translateX(-5px);
+        }
+
+        .timeline-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateX(5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .timeline-role {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-bright);
+        }
+
+        .timeline-company {
+            color: var(--accent-light);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--accent-glow);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .timeline-location {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-list {
+            list-style: none;
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .timeline-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .timeline-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-category-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.4rem 0.9rem;
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 8px;
+            font-size: 0.82rem;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: var(--accent);
+            color: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .education-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+        }
+
+        .education-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-degree {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 0.3rem;
+        }
+
+        .education-school {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Languages Section */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .language-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .language-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .language-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 0.5rem;
+        }
+
+        .language-level {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+        }
+
+        .language-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .language-bar-fill {
+            height: 100%;
+            background: var(--gradient-1);
+            border-radius: 10px;
+            transition: width 1.5s ease;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-cards {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--gradient-1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info {
+            text-align: left;
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-value {
+            font-weight: 600;
+            color: var(--text-bright);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll down indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text-muted);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--secondary);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                transition: right 0.3s ease;
+                border-left: 1px solid var(--border);
+                gap: 0.25rem;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-image-container {
+                display: flex;
+                justify-content: center;
+            }
+
+            .about-details {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-pic-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-pic,
+            .profile-pic-placeholder {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-pic-placeholder {
+                font-size: 3rem;
+            }
+
+            .profile-pic-ring {
+                width: 162px;
+                height: 162px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">GM</div>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="active" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+                <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+                <li><a href="#education" onclick="closeMenu()">Education</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+
+            <!-- ===== PROFILE PICTURE ===== -->
+            <div class="profile-pic-wrapper">
+                <div class="profile-pic-container">
+                    <div class="profile-pic-ring"></div>
+
+                    <!--
+                        ✅ TO ADD YOUR REAL PHOTO:
+                        1. Place your photo in the same folder as this HTML file
+                        2. Uncomment the <img> line below
+                        3. Comment out (or delete) the "profile-pic-placeholder" div
+                        4. Replace "your-photo.jpg" with your actual file name
+                    -->
+
+                    <!-- <img src="your-photo.jpg" alt="Guyto Morel" class="profile-pic"> -->
+
+                    <!-- Placeholder with initials (remove this when you add your photo) -->
+                    <div class="profile-pic-placeholder"><img src="guyto.morel.jpg.jpeg" alt="Guyto Morel" class="profile-pic"></div>
+
+                    <div class="profile-status"></div>
+                </div>
+            </div>
+            <!-- ===== END PROFILE PICTURE ===== -->
+
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                Available for opportunities
+            </div>
+            <h1>
+                Hi, I'm <span class="gradient-text">Guyto Morel</span>
+            </h1>
+            <p class="hero-subtitle">
+                Senior Advisor Technical Support with expertise in IT governance, cybersecurity, and enterprise-level support. Passionate about delivering exceptional technical solutions and driving team excellence.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Get In Touch
+                </a>
+                <a href="#experience" class="btn btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    View My Work
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Years in IT</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">L2</div>
+                    <div class="stat-label">Support Level</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Languages</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">// About Me</div>
+                <h2 class="section-title">Who I Am</h2>
+            </div>
+
+            <div class="about-grid animate-on-scroll">
+                <div class="about-image-container">
+                    <!--
+                        ✅ TO ADD YOUR REAL PHOTO HERE TOO:
+                        1. Uncomment the <img> line below
+                        2. Comment out the "about-image-placeholder" div
+                        3. Replace "your-photo.jpg" with your actual file name
+                    -->
+
+                    <!-- <img src="your-photo.jpg" alt="Guyto Morel" class="about-image"> -->
+
+                    <div class="about-image-placeholder"><img src="guyto.morel.jpg.jpeg" alt="Guyto Morel" class="about-image"></div>
+                    <div class="about-image-decoration"></div>
+                </div>
+
+                <div class="about-text">
+                    <h3>Senior Advisor Technical Support</h3>
+                    <p>
+                        I hold a bachelor's degree in administration and have devoted my career to Information Technology. After obtaining my AEC at Institut Teccart, I stepped into the IT workforce and have since grown into a Level 2 Technical Support Advisor at Laurentian Bank.
+                    </p>
+                    <p>
+                        Currently pursuing my DESS in Governance, Audit, and IT Security at Sherbrooke University, I'm committed to becoming one of the best in technology — maintaining a perfect work environment with excellent communication within a great IT team.
+                    </p>
+
+                    <div class="about-details">
+                        <div class="about-detail">
+                            <span class="about-detail-icon">📍</span>
+                            <span class="about-detail-label">Location:</span>
+                            <span class="about-detail-value">Montreal, QC</span>
+                        </div>
+                        <div class="about-detail">
+                            <span class="about-detail-icon">🎓</span>
+                            <span class="about-detail-label">Study:</span>
+                            <span class="about-detail-value">DESS IT Security</span>
+                        </div>
+                        <div class="about-detail">
+                            <span class="about-detail-icon">💼</span>
+                            <span class="about-detail-label">Role:</span>
+                            <span class="about-detail-value">L2 Support</span>
+                        </div>
+                        <div class="about-detail">
+                            <span class="about-detail-icon">🌐</span>
+                            <span class="about-detail-label">Languages:</span>
+                            <span class="about-detail-value">FR / EN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">// Career</div>
+                <h2 class="section-title">Work Experience</h2>
+            </div>
+
+            <div class="timeline">
+                <!-- Job 1 -->
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-role">Level 2 Technical Support Advisor</div>
+                                <div class="timeline-company">Laurentian Bank</div>
+                            </div>
+                            <div class="timeline-date">Jul 2022 – Present</div>
+                        </div>
+                        <div class="timeline-location">📍 Montreal, Canada</div>
+                        <ul class="timeline-list">
+                            <li>Change Management — Implementation of technical changes across the organization</li>
+                            <li>Problem Management — Identify root causes on reactive/proactive problems and prevent recurrence</li>
+                            <li>Documented support interactions in system for future reference and knowledge base enrichment</li>
+                            <li>Assist professional services teams in development and implementation of projects</li>
+                            <li>Assist in creation of development and implementation documentation</li>
+                            <li>Perform internal testing as well as customer acceptance tests</li>
+                            <li>Ensure handover of customer customization projects from professional services to software support (after go-live)</li>
+                            <li>Investigate and isolate product documentation issues, code issues, and configuration issues reported by customers</li>
+                            <li>Arrange bridge calls for critical issues for all parties to collaborate and provide workaround/resolution within agreed SLA</li>
+                            <li>Escalate problems to appropriate parties and communicate solutions to the customer</li>
+                            <li>Keep incident lifecycle and status updated via the bug/defect tracking tool until closure</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-role">Technical Support Officer</div>
+                                <div class="timeline-company">Bedard Human Resources</div>
+                            </div>
+                            <div class="timeline-date">Aug 2021 – Jul 2022</div>
+                        </div>
+                        <div class="timeline-location">📍 Montreal, Canada</div>
+                        <ul class="timeline-list">
+                            <li>Collaborated with IT teams to identify ways to increase support response time and end-user satisfaction</li>
+                            <li>Troubleshot incidents reported by end-users, escalating where necessary and discussing resolutions for permanent solutions</li>
+                            <li>Analyzed and understood incident trends, communicated with problem management for reducing issues/impact and driving efficiency</li>
+                            <li>Managed cell phones with Microsoft Intune</li>
+                            <li>User support for both hardware and software</li>
+                            <li>Managed equipment inventory and all computer equipment</li>
+                            <li>Office 365, Outlook administration</li>
+                            <li>Windows 7/8/10 support with in-depth knowledge of iOS and Android</li>
+                            <li>Active Directory management (User/Computer)</li>
+                            <li>Managed application deployment via SCCM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">// Expertise</div>
+                <h2 class="section-title">Skills & Competencies</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-category-icon">🖥️</div>
+                    <h3>Systems & Infrastructure</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Windows 10 & 11</span>
+                        <span class="skill-tag">Linux (Ubuntu)</span>
+                        <span class="skill-tag">Active Directory</span>
+                        <span class="skill-tag">SCCM</span>
+                        <span class="skill-tag">Microsoft Intune</span>
+                        <span class="skill-tag">Cloud Computing</span>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-category-icon">🔒</div>
+                    <h3>Security & Monitoring</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Splunk (SIEM)</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">IT Governance</span>
+                        <span class="skill-tag">IT Audit</span>
+                        <span class="skill-tag">IT Security</span>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-category-icon">💻</div>
+                    <h3>Development & Scripting</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PowerShell</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Imaging & Packaging</span>
+                        <span class="skill-tag">Desktop Deployment</span>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-category-icon">🛠️</div>
+                    <h3>Support & Service Management</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ServiceNow</span>
+                        <span class="skill-tag">Troubleshooting</span>
+                        <span class="skill-tag">Diagnostics</span>
+                        <span class="skill-tag">Issue Resolution</span>
+                        <span class="skill-tag">Application Support</span>
+                        <span class="skill-tag">Office 365</span>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-category-icon">🤝</div>
+                    <h3>Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Active Listening</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Customer Service</span>
+                        <span class="skill-tag">Technical Documentation</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                        <span class="skill-tag">Change Management</span>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-category-icon">📱</div>
+                    <h3>Mobile & Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">iOS</span>
+                        <span class="skill-tag">Android</span>
+                        <span class="skill-tag">MDM (Intune)</span>
+                        <span class="skill-tag">Outlook</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">// Education</div>
+                <h2 class="section-title">Academic Background</h2>
+            </div>
+
+            <div class="education-grid">
+                <div class="education-card animate-on-scroll">
+                    <div class="education-year">2023 – 2025</div>
+                    <div class="education-degree">DESS Governance, Audit & IT Security</div>
+                    <div class="education-school">Sherbrooke University</div>
+                </div>
+
+                <div class="education-card animate-on-scroll">
+                    <div class="education-year">2019 – 2021</div>
+                    <div class="education-degree">AEC Information Technology</div>
+                    <div class="education-school">Institut Teccart</div>
+                </div>
+
+                <div class="education-card animate-on-scroll">
+                    <div class="education-year">2002 – 2006</div>
+                    <div class="education-degree">Bachelor's Degree in Accounting</div>
+                    <div class="education-school">UEH Haiti</div>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div style="margin-top: 4rem;">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-label">// Languages</div>
+                    <h2 class="section-title">Languages</h2>
+                </div>
+
+                <div class="languages-grid">
+                    <div class="language-card animate-on-scroll">
+                        <div class="language-name">🇫🇷 French</div>
+                        <div class="language-level">Advanced Level</div>
+                        <div class="language-bar">
+                            <div class="language-bar-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="language-card animate-on-scroll">
+                        <div class="language-name">EN English</div>
+                        <div class="language-level">Intermediate Level</div>
+                        <div class="language-bar">
+                            <div class="language-bar-fill" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">// Contact</div>
+                <h2 class="section-title">Let's Connect</h2>
+            </div>
+
+            <div class="contact-cards">
+                <a href="mailto:mguyto@hotmail.com" class="contact-card animate-on-scroll">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-info">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">mguyto@hotmail.com</div>
+                    </div>
+                </a>
+
+                <a href="tel:+14387225351" class="contact-card animate-on-scroll">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">438-722-5351</div>
+                    </div>
+                </a>
+
+                <div class="contact-card animate-on-scroll">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-info">
+                        <div class="contact-label">Location</div>
+                        <div class="contact-value">Montreal, QC, Canada</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Guyto Morel. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('hamburger').classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        function closeMenu() {
+            document.getElementById('hamburger').classList.remove('active');
+            document.getElementById('navLinks').classList.remove('open');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            // Active nav link
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate language bars on scroll
+        const langObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.language-bar-fill');
+                    fills.forEach(fill => {
+                        const width = fill.style.width;
+                        fill.style.width = '0%';
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 300);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.languages-grid').forEach(el => {
+            langObserver.observe(el);
+        });
+    </script>
+
+</body>
+</html>
+```
+
+
+
